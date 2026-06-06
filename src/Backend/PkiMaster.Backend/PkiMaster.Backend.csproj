@@ -8,6 +8,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
       <ProjectReference Include="..\PkiMaster.Application\PkiMaster.Application.csproj" />
       <ProjectReference Include="..\PkiMaster.Infrastructure\PkiMaster.Infrastructure.csproj" />
     </ItemGroup>

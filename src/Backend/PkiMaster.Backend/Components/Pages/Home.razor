@@ -2,6 +2,15 @@
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>PkiMaster</h1>
 
-Welcome to your new app.
+<AuthorizeView>
+    <Authorized Context="authState">
+        <p>Signed in as: <strong>@authState.User.Identity?.Name</strong></p>
+        <p>You are signed in to PkiMaster.</p>
+    </Authorized>
+    <NotAuthorized>
+        <p>You are not signed in.</p>
+        <p><a href="/login">Go to sign-in page</a></p>
+    </NotAuthorized>
+</AuthorizeView>

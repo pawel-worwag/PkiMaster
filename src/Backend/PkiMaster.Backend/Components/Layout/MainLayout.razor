@@ -1,5 +1,17 @@
 ﻿@inherits LayoutComponentBase
 
+<AuthorizeView>
+    <Authorized>
+        <form method="post" action="/account/logout">
+            <AntiforgeryToken />
+            <button type="submit">Sign out</button>
+        </form>
+    </Authorized>
+    <NotAuthorized>
+        <a href="/login">Sign in</a>
+    </NotAuthorized>
+</AuthorizeView>
+
 @Body
 
 <div id="blazor-error-ui" data-nosnippet>
