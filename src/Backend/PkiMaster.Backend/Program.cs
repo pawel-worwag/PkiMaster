@@ -1,6 +1,6 @@
 using PkiMaster.Application;
 using PkiMaster.Backend.Components;
-using PkiMaster.Backend.Identity;
+using PkiMaster.Backend.Endpoints;
 using PkiMaster.Infrastructure;
 using PkiMaster.Infrastructure.Persistence;
 

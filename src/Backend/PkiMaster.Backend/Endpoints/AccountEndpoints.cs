@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using PkiMaster.Application.Identity.Login;
 using PkiMaster.Application.Identity.Logout;
 
-namespace PkiMaster.Backend.Identity;
+namespace PkiMaster.Backend.Endpoints;
 
 public static class AccountEndpoints
 {
