@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>true</IsPackable>
+    <PackageId>PkiMaster.Dto</PackageId>
+    <Title>PkiMaster DTO Contracts</Title>
+    <Description>DTO contracts for the PkiMaster ecosystem.</Description>
+    <Authors>PkiMaster</Authors>
+    <Company>pworwag.com.pl</Company>
+    <PackageTags>pkimaster;pki;dto;contracts</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+</Project>
