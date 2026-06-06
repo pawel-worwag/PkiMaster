@@ -1,0 +1,5 @@
+.idea/
+bin/
+obj/
+*.swp
+[aA]ppsettings.[dD]evelopment.json

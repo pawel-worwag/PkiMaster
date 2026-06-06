@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Backend/">
+    <Project Path="src/Backend/PkiMaster.Application/PkiMaster.Application.csproj" />
+    <Project Path="src/Backend/PkiMaster.Backend/PkiMaster.Backend.csproj" />
+    <Project Path="src/Backend/PkiMaster.Domain/PkiMaster.Domain.csproj" />
+    <Project Path="src/Backend/PkiMaster.Dto/PkiMaster.Dto.csproj" />
+    <Project Path="src/Backend/PkiMaster.Infrastructure/PkiMaster.Infrastructure.csproj" />
+  </Folder>
+</Solution>
