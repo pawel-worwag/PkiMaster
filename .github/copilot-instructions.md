@@ -15,6 +15,15 @@
 - Implement the solution using **Onion Architecture**.
 - Design and implement features using **Vertical Slices** principles.
 
+## Mandatory Architecture Gate
+- Onion/Vertical Slice rules are **non-negotiable** and must not be bypassed for speed.
+- Before writing code, explicitly verify and keep this structure:
+    - Use cases must be implemented in `Application` as feature slices (for example: feature folder with command/query + handler).
+- If a planned change would violate Onion or Vertical Slice rules, stop and redesign first; do not implement the violating version.
+- In the final response for implementation tasks, include a short compliance statement with file evidence:
+    - `Onion: OK/NOK` + affected files.
+    - `Vertical Slice: OK/NOK` + affected files.
+
 ## Coding and Language Standards
 - Keep all code, comments, file names, and commit descriptions in **English**.
 - The only exception is files explicitly related to **internationalization (i18n)**.
@@ -28,3 +37,5 @@
 
 ## Dependency Management
 - Use **central package management** for NuGet dependencies.
+
+
