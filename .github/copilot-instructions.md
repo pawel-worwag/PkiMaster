@@ -38,4 +38,6 @@
 ## Dependency Management
 - Use **central package management** for NuGet dependencies.
 
+## Build Verification
+- After implementing changes, always verify that the program compiles before reporting task completion.
 
