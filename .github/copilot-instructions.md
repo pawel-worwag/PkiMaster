@@ -30,6 +30,8 @@
 
 ## API Style
 - Prefer **Minimal APIs** over traditional MVC/API controllers.
+- Every contract returned by API endpoints to users must be defined in `PkiMaster.Dto`.
+- This DTO package is treated as a reusable NuGet for dependent projects and must stay complete.
 
 ## C# Conventions
 - Use **primary constructors** instead of traditional constructors whenever practical.
@@ -40,4 +42,3 @@
 
 ## Build Verification
 - After implementing changes, always verify that the program compiles before reporting task completion.
-
