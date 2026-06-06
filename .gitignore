@@ -3,3 +3,4 @@ bin/
 obj/
 *.swp
 [aA]ppsettings.[dD]evelopment.json
+.DS_Store
