@@ -4,3 +4,4 @@ obj/
 *.swp
 [aA]ppsettings.[dD]evelopment.json
 .DS_Store
+src/Backend/PkiMaster.Backend/wwwroot/lib/
