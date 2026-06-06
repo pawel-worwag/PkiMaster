@@ -23,6 +23,7 @@
 - In the final response for implementation tasks, include a short compliance statement with file evidence:
     - `Onion: OK/NOK` + affected files.
     - `Vertical Slice: OK/NOK` + affected files.
+- Any implementation response without this compliance block is considered incomplete.
 
 ## Coding and Language Standards
 - Keep all code, comments, file names, and commit descriptions in **English**.
