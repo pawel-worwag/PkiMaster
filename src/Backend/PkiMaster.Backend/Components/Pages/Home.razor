@@ -5,39 +5,3 @@
 <PageTitle>Home</PageTitle>
 
 <h1>PkiMaster</h1>
-
-<AuthorizeView>
-    <Authorized Context="authState">
-        <p>Signed in as: <strong>@authState.User.Identity?.Name</strong></p>
-        <p>You are signed in to PkiMaster.</p>
-        @if (_claims is not null && _claims.Any())
-        {
-            <ul>
-                @foreach (var claim in _claims)
-                {
-                    <li>@claim.Type: @claim.Value</li>
-                }
-            </ul>
-        }
-    </Authorized>
-    <NotAuthorized>
-        <p>You are not signed in.</p>
-        <p><a href="/login">Go to sign-in page</a></p>
-    </NotAuthorized>
-</AuthorizeView>
-
-@code{
-    private IEnumerable<Claim> _claims = new List<Claim>();
-
-    protected override async Task OnInitializedAsync()
-    {
-        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        var user = authState.User;
-
-        if (user.Identity is not null && user.Identity.IsAuthenticated)
-        {
-            _claims = user.Claims;
-        }
-
-    }
-}
