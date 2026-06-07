@@ -20,12 +20,13 @@ public static class IdentitySeed
         {
             throw new InvalidOperationException($"Cannot create SuperAdmin role: {string.Join("; ", result.Errors.Select(x => x.Description))}");
         }
-
+        /*
         result = await roleManager.AddClaimAsync(role, new Claim(ClaimTypes.Role, "SuperAdmin"));
         if (!result.Succeeded)
         {
             throw new InvalidOperationException($"Cannot add SuperAdmin role claim: {string.Join("; ", result.Errors.Select(x => x.Description))}");
         }
+        */
     }
     public static async Task SeedAdminAsync(IServiceProvider services)
     {
