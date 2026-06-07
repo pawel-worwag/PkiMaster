@@ -37,17 +37,21 @@ public partial class MainLayout(IJSRuntime js) : IAsyncDisposable
 
     public async ValueTask DisposeAsync()
     {
-        if (_module is not null)
+        var module = _module;
+        if (module is null)
         {
-            try
-            {
-                await _module.DisposeAsync();
-                _module = null;
-            }
-            catch
-            {
-                // ignored
-            }
+            return;
         }
+        _module = null;
+        
+        try
+        {
+            await module.DisposeAsync();
+        }
+        catch (JSDisconnectedException)
+        {
+            // ignored
+        }
+        GC.SuppressFinalize(this);
     }
 }
