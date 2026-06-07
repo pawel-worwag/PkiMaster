@@ -11,6 +11,7 @@ public static class InfrastructureInitialization
         using var scope = services.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<PkiMasterIdentityDbContext>();
         await dbContext.Database.MigrateAsync(cancellationToken);
+        await IdentitySeed.SeedSuperadminRoleAsync(scope.ServiceProvider);
         await IdentitySeed.SeedAdminAsync(scope.ServiceProvider);
     }
 }
