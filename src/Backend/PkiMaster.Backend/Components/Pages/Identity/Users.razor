@@ -3,12 +3,12 @@
 <table class="table table-hover">
     <thead>
     <tr>
-        <th>UserName</th>
+        <th>User name</th>
         <th>Email</th>
         <th>Access failed count</th>
         <th>Lockout</th>
         <th class="text-end">
-            <div class="btn btn-sm btn-outline-primary border-0">
+            <div class="btn btn-sm border text-body">
                 <span class="bi bi-person-plus-fill"></span>
             </div>
         </th>
@@ -34,15 +34,22 @@
             <td>
                 @if (user.LockoutEnabled)
                 {
-                    @user.LockoutEnd
+                    @if (user.LockoutEnd is null)
+                    {
+                        <span>-</span>
+                    }
+                    else
+                    {
+                        <span>@user.LockoutEnd</span>
+                    }
                 }
                 else
                 {
-                    <span>-</span>
+                    <span class="badge text-bg-danger">disabled</span>
                 }
             </td>
             <td class="text-end">
-                <NavLink><span class="bi bi-chevron-right"></span></NavLink>
+                <NavLink class="btn btn-sm"><span class="bi bi-chevron-right"></span></NavLink>
             </td>
         </tr>
     }

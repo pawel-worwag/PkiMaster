@@ -46,7 +46,8 @@ public static class IdentitySeed
         {
             UserName = "Admin",
             Email = "admin@localhost",
-            EmailConfirmed = true
+            EmailConfirmed = true,
+            LockoutEnabled = false
         };
 
         var createResult = await userManager.CreateAsync(admin);
