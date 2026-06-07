@@ -10,23 +10,28 @@ public static class IdentitySeed
     {
         var roleManager = services.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
         var existingRole = await roleManager.FindByNameAsync("SuperAdmin");
-        if (existingRole is not null)
+        if (existingRole is null)
         {
-            return;
+            var role = new IdentityRole<Guid>("SuperAdmin");
+            var result = await roleManager.CreateAsync(role);
+            if (!result.Succeeded)
+            {
+                throw new InvalidOperationException(
+                    $"Cannot create SuperAdmin role: {string.Join("; ", result.Errors.Select(x => x.Description))}");
+            }
         }
-        var role = new IdentityRole<Guid>("SuperAdmin");
-        var result = await roleManager.CreateAsync(role);
-        if (!result.Succeeded)
+        existingRole = await roleManager.FindByNameAsync("Admin");
+        if (existingRole is null)
         {
-            throw new InvalidOperationException($"Cannot create SuperAdmin role: {string.Join("; ", result.Errors.Select(x => x.Description))}");
+            var role = new IdentityRole<Guid>("Admin");
+            var result = await roleManager.CreateAsync(role);
+            if (!result.Succeeded)
+            {
+                throw new InvalidOperationException(
+                    $"Cannot create SuperAdmin role: {string.Join("; ", result.Errors.Select(x => x.Description))}");
+            }
         }
-        /*
-        result = await roleManager.AddClaimAsync(role, new Claim(ClaimTypes.Role, "SuperAdmin"));
-        if (!result.Succeeded)
-        {
-            throw new InvalidOperationException($"Cannot add SuperAdmin role claim: {string.Join("; ", result.Errors.Select(x => x.Description))}");
-        }
-        */
+
     }
     public static async Task SeedAdminAsync(IServiceProvider services)
     {
