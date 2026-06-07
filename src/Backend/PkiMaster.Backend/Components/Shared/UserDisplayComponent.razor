@@ -1,0 +1,27 @@
+<AuthorizeView>
+    <Authorized>
+        <div>
+            <div class="dropdown text-end">
+                <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                    <span>@userDisplayName</span>
+                </a>
+                <ul class="dropdown-menu text-small">
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                        <form method="post" action="/account/logout">
+                            <AntiforgeryToken/>
+                            <button class="dropdown-item text-danger" type="submit">Sign out</button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </Authorized>
+    <NotAuthorized>
+        <a href="/login">Sign in</a>
+    </NotAuthorized>
+</AuthorizeView>

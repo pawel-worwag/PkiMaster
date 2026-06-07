@@ -1,4 +1,5 @@
-﻿@inherits LayoutComponentBase
+﻿@using PkiMaster.Backend.Components.Shared
+@inherits LayoutComponentBase
 
 <div class="container">
     <div class="d-flex my-4 justify-content-between align-items-center">
@@ -6,21 +7,10 @@
             <button class="btn btn-outline-secondary"><span class="bi bi-list"></span></button>
             <span class="fs-3 ms-4">PkiMaster</span>
         </div>
+        <UserDisplayComponent/>
     </div>
 </div>
 <div class="container my-3">
-    <AuthorizeView>
-        <Authorized>
-            <form method="post" action="/account/logout">
-                <AntiforgeryToken />
-                <button type="submit">Sign out</button>
-            </form>
-        </Authorized>
-        <NotAuthorized>
-            <a href="/login">Sign in</a>
-        </NotAuthorized>
-    </AuthorizeView>
-
     @Body
 </div>
 
