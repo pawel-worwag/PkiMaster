@@ -1,0 +1,50 @@
+@page "/users"
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>UserName</th>
+        <th>Email</th>
+        <th>Access failed count</th>
+        <th>Lockout</th>
+        <th class="text-end">
+            <div class="btn btn-sm btn-outline-primary border-0">
+                <span class="bi bi-person-plus-fill"></span>
+            </div>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in _users)
+    {
+        <tr>
+            <td>@user.UserName</td>
+            <td>
+                @if (user.EmailConfirmed)
+                {
+                    <span class="bi bi-check-circle me-2 text-success"></span>
+                }
+                else
+                {
+                    <span class="bi circle me-2 text-danger"></span>
+                }
+                @user.Email
+            </td>
+            <td>@user.AccessFailedCount</td>
+            <td>
+                @if (user.LockoutEnabled)
+                {
+                    @user.LockoutEnd
+                }
+                else
+                {
+                    <span>-</span>
+                }
+            </td>
+            <td class="text-end">
+                <NavLink><span class="bi bi-chevron-right"></span></NavLink>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
