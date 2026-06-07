@@ -39,8 +39,15 @@ public partial class MainLayout(IJSRuntime js) : IAsyncDisposable
     {
         if (_module is not null)
         {
-            await _module.DisposeAsync();
-            _module = null;
+            try
+            {
+                await _module.DisposeAsync();
+                _module = null;
+            }
+            catch
+            {
+                // ignored
+            }
         }
     }
 }
