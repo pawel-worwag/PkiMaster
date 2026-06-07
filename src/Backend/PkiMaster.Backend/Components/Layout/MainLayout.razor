@@ -4,12 +4,24 @@
 <div class="container">
     <div class="d-flex my-4 justify-content-between align-items-center">
         <div class="d-flex align-items-center">
-            <button class="btn btn-outline-secondary"><span class="bi bi-list"></span></button>
+            <button class="btn btn-outline-secondary" @onclick="OpenMenuAsync"><span class="bi bi-list"></span></button>
             <span class="fs-3 ms-4">PkiMaster</span>
         </div>
         <UserDisplayComponent/>
     </div>
 </div>
+
+<div class="offcanvas offcanvas-start"
+     tabindex="-1" @ref="_mainMenuElement">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasMainMenuLabel">PkiMaster</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+        xxx
+    </div>
+</div>
+
 <div class="container my-3">
     @Body
 </div>
