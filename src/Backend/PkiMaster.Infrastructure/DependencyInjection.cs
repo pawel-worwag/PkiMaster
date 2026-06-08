@@ -59,6 +59,7 @@ public static class DependencyInjection
 
         services.AddAuthorizationBuilder();
         services.AddScoped<IIdentityAuthService, IdentityAuthService>();
+        services.AddScoped<IIdentityUserRepository, IdentityUserRepository>();
 
         return services;
     }
