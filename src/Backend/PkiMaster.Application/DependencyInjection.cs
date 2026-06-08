@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using PkiMaster.Application.Common.Messaging;
 using PkiMaster.Application.Identity.Current;
 using PkiMaster.Application.Identity.Login;
 using PkiMaster.Application.Identity.Logout;
@@ -14,6 +15,9 @@ public static class DependencyInjection
         services.AddScoped<LoginHandler>();
         services.AddScoped<LogoutHandler>();
         services.AddScoped<CurrentUserHandler>();
+        
+        services.RegisterHandlersFromAssembly(typeof(DependencyInjection).Assembly);
+        
         return services;
     }
 }
