@@ -12,21 +12,12 @@ internal sealed class IdentityUserRepository(PkiMasterIdentityDbContext dbContex
         var users = await dbContext.Users
             .AsNoTracking()
             .OrderBy(user => user.NormalizedUserName)
-            .Select(user => new
-            {
-                User = user,
-                Roles = (
-                    from userRole in dbContext.UserRoles
-                    join role in dbContext.Roles on userRole.RoleId equals role.Id
-                    where userRole.UserId == user.Id
-                    select role.Name ?? string.Empty
-                ).ToArray()
-            })
+            .Select(user => IdentityUserMapper.ToDomain(user,(from userRole in dbContext.UserRoles
+                join role in dbContext.Roles on userRole.RoleId equals role.Id
+                where userRole.UserId == user.Id
+                select role.Name ?? string.Empty).ToArray()))
             .ToListAsync(cancellationToken);
-
-        return users
-            .Select(x => IdentityUserMapper.ToDomain(x.User, x.Roles))
-            .ToList();
+        return users;
     }
 
     public async Task<User?> FindByIdAsync(Guid id, CancellationToken cancellationToken)
@@ -34,23 +25,11 @@ internal sealed class IdentityUserRepository(PkiMasterIdentityDbContext dbContex
         var userWithRoles = await dbContext.Users
             .AsNoTracking()
             .Where(user => user.Id == id)
-            .Select(user => new
-            {
-                User = user,
-                Roles = (
-                    from userRole in dbContext.UserRoles
-                    join role in dbContext.Roles on userRole.RoleId equals role.Id
-                    where userRole.UserId == user.Id
-                    select role.Name ?? string.Empty
-                ).ToArray()
-            })
+            .Select(user => IdentityUserMapper.ToDomain(user,(from userRole in dbContext.UserRoles
+                join role in dbContext.Roles on userRole.RoleId equals role.Id
+                where userRole.UserId == user.Id
+                select role.Name ?? string.Empty).ToArray()))
             .FirstOrDefaultAsync(cancellationToken);
-
-        if (userWithRoles is null)
-        {
-            return null;
-        }
-
-        return IdentityUserMapper.ToDomain(userWithRoles.User, userWithRoles.Roles);
+        return userWithRoles;
     }
 }

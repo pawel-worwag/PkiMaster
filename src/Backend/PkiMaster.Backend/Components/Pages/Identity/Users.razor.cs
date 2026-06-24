@@ -1,17 +1,16 @@
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using PkiMaster.Infrastructure.Identity;
+using PkiMaster.Application.Common.Messaging;
+using PkiMaster.Application.Identity;
 
 namespace PkiMaster.Backend.Components.Pages.Identity;
 
-public partial class Users(UserManager<ApplicationUser> userManager) : ComponentBase
+public partial class Users(IHandler<GetAllUsersRequest, ICollection<Dto.Identity.GetAllUsers.User>> handler) : ComponentBase
 {
-    private IEnumerable<ApplicationUser> _users = new List<ApplicationUser>();
+    private IEnumerable<Dto.Identity.GetAllUsers.User> _users = new List<Dto.Identity.GetAllUsers.User>();
     
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-        _users = await userManager.Users.OrderBy(p=>p.NormalizedUserName).ToListAsync();
+        _users = await handler.HandleAsync(new GetAllUsersRequest());
     }
 }

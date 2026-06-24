@@ -5,6 +5,7 @@
     <tr>
         <th>User name</th>
         <th>Email</th>
+        <th>Roles</th>
         <th>Access failed count</th>
         <th>Lockout</th>
         <th class="text-end">
@@ -29,6 +30,12 @@
                     <span class="bi circle me-2 text-danger"></span>
                 }
                 @user.Email
+            </td>
+            <td>
+                @foreach (var role in user.Roles)
+                {
+                    <span class="badge text-bg-secondary">@role</span>
+                }
             </td>
             <td>@user.AccessFailedCount</td>
             <td>
